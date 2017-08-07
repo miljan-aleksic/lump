@@ -1,0 +1,16 @@
+{
+  "name": "@lump/less",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "@lump/read": "^0.1.0",
+    "@lump/write": "^0.1.0",
+    "less": "^2.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}

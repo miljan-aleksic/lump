@@ -1,0 +1,14 @@
+{
+  "name": "@lump/copy-recursive",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "recursive-copy": "^2.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}

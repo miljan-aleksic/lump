@@ -1,0 +1,14 @@
+{
+  "name": "@lump/copy",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "cpy": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}

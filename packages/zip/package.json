@@ -1,0 +1,17 @@
+{
+  "name": "@lump/zip",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "archiver": "^2.0.0",
+    "chalk": "^2.1.0",
+    "globby": "^6.1.0",
+    "mkdirp": "^0.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}

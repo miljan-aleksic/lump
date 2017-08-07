@@ -1,0 +1,14 @@
+{
+  "name": "@lump/task",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "ora": "^1.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}

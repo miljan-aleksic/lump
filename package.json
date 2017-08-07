@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "@lump/lump",
+  "version": "0.1.0",
+  "description": "A collection of methods to perform builds for diverse type of projects.",
+  "author": "Miljan Aleksic",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "rm -rf tests/tmp && jest"
+  },
+  "devDependencies": {
+    "jest": "^20.0.4"
+  }
+}

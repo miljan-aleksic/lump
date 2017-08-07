@@ -1,0 +1,17 @@
+{
+  "name": "@lump/minify",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "@lump/read": "^0.1.0",
+    "@lump/write": "^0.1.0",
+    "clean-css": "^4.1.7",
+    "uglify-js": "^3.0.27"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}
