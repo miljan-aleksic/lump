@@ -14,69 +14,66 @@
  - Node 7.8+
  - NPM 3.0+
 
-## Usage
+## Getting Started
 
-Prepare the build file.
+1. Run `npm i --save @lump/it` in your package directory.
+1. Create the build script file at `scripts/build.js`.
+1. Add the script execution `node scripts/build.js` in the `package.json`.
+1. Run the build with `npm run build`.
+
+## Gotchas
+
+### Use relative paths to the project folder
+
+No matter where your build is, the method path params expects a relative path
+from the project root folder.
+
+Example, if your build script is at `build/build.js` and the files you want to
+match inside `src/files`, the glob to them would be `src/files/*`.
+
+### Organize your tasks with the `task` method.
+
+The `task` method allows to show a spinner and a text during execution. Keeping all
+code wrapped into it allows for a nicer user experience and organization.
 
 ```js
-const lumpit = require('@lump/it')
-const task = require('@lump/task')
-const remove = require('@lump/remove')
-const copy = require('@lump/copy')
+await task({
+  text: 'Spinner text 1',
+  exec: () => copy({...})
+})
 
-lumpit(async () => {
-  // execute commands directly
-  await remove('dist')
+// more complex tasks
+await task({
+  text: 'Spinner text 2',
+  exec: async () => {
+    await remove(...)
+    await copy({...})
+    ...
+  }
+})
+```
 
-  // execute tasks with spinner and text indicator
-  await task({
-    text: 'Build',
-    exec: () => copy({...})
-  })
+### Execute tasks in parallel when possible
 
-  // execute more complex tasks
-  await task({
-    text: 'Build',
-    exec: async () => {
-      await remove('dist')
-      await copy({...})
-      ...
-    }
-  })
+With `Promise.all` is possible to execute a group of `async` tasks in parallel
+while the next chunk of code awaits for the completition of all the group tasks.
 
-  // execute tasks in parallel
-  await Promise.all([
+```js
+await Promise.all([
+  copy({...}),
+  copy({...}),
+  ...
+])
+
+// or inside of a task method
+await task({
+  text: 'Build',
+  exec: () => Promise.all([
     copy({...}),
     copy({...}),
     ...
   ])
-
-  // or
-  await task({
-    text: 'Build',
-    exec: () => Promise.all([
-      copy({...}),
-      copy({...}),
-      ...
-    ])
-  })
 })
-```
-
-Add a script in the `package.json`.
-
-```js
-{
-  "scripts": {
-    "build": "node build.js"
-  }
-}
-```
-
-And run the script.
-
-```js
-npm run build
 ```
 
 ## Methods
