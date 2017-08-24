@@ -10,17 +10,13 @@ const engines = {
  * Run the main code
  */
 module.exports = build => {
-  log('') // leave starting space
-
   // check node env
   checkEnv(engines)
 
   build().then(() => {
-    log('') // leave ending space
     process.exit() // make sure to exit
   }).catch(e => {
     log(e)
-    log('')
     process.exit()
   })
 }
