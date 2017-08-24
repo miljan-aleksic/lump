@@ -21,10 +21,20 @@ module.exports = async ({ src, sourceMap = false }) => {
 
   if (ext === '.css') {
     const minified = await _minifyCSS(content, sourceMap)
+
+    if (minified.error) {
+      throw minified.error
+    }
+
     code = minified.styles
     map = minified.sourceMap
   } else if (ext === '.js') {
     const minified = await _minifyJS(content, sourceMap)
+
+    if (minified.error) {
+      throw minified.error
+    }
+
     code = minified.code
     map = minified.map
   }
