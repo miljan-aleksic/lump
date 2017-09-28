@@ -9,7 +9,7 @@ const write = require('@lump/write')
  * Rollup build
  * f@ormat es|cjs|umd
  */
-module.exports = async ({ config, options = {} }) => {
+module.exports = async (config, options = {}) => {
   if (!config) {
     throw new Error('Missing Arguments')
   }
@@ -36,6 +36,6 @@ module.exports = async ({ config, options = {} }) => {
 
   await rollup.rollup(_config).then(async bundle => {
     const result = await bundle.generate(_config)
-    return write(_config.dest, result.code)
+    await write(_config.dest, result.code)
   })
 }

@@ -6,7 +6,7 @@ const write = require('@lump/write')
 /*
  * Add top banner to matched glob patterns
  */
-module.exports = async ({ src, banner }) => {
+module.exports = async (src, banner) => {
   if (!src || !banner) {
     throw new Error('Missing Arguments')
   }

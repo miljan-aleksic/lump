@@ -8,7 +8,7 @@ const write = require('@lump/write')
 /*
  * Minify CSS/JS files with optional sourceMap
  */
-module.exports = async ({ src, sourceMap = false }) => {
+module.exports = async (src, sourceMap = false) => {
   if (!src) {
     throw new Error('Missing Arguments')
   }

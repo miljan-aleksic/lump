@@ -10,7 +10,7 @@ const stats = []
 /*
  * Zip matched patterns
  */
-module.exports = async ({ src, dest }) => {
+module.exports = async (src, dest) => {
   if (!src || !dest) {
     throw new Error('Missing Arguments')
   }

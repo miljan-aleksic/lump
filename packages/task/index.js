@@ -3,7 +3,7 @@ const ora = require('ora')
 /*
  * Run a task with spinner indication
  */
-module.exports = ({ text, exec }) => {
+module.exports = (text, exec) => {
   if (!text || !exec) {
     throw new Error('Missing Arguments')
   }

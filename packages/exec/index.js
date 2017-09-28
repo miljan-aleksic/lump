@@ -1,7 +1,7 @@
 /*
  * Exec a command using child_process
  */
-module.exports = async ({ command, options = {} }) => {
+module.exports = async (command, options = {}) => {
   if (!command) {
     throw new Error('Missing Arguments')
   }

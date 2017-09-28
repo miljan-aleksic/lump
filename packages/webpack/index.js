@@ -5,7 +5,7 @@ const merge = require('webpack-merge')
 /*
  * Compile webpack
  */
-module.exports = (config) => {
+module.exports = config => {
   return new Promise((resolve, reject) => {
     const compiler = webpack(merge(config, baseConfig))
 

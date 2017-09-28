@@ -6,7 +6,7 @@ const download = require('download')
 /*
  * Download files
  */
-module.exports = async ({ url, dest }) => {
+module.exports = async (url, dest) => {
   if (!url || !dest) {
     throw new Error('Missing Arguments')
   }
