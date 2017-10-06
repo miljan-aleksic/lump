@@ -1,0 +1,16 @@
+{
+  "name": "@lump/index",
+  "description": "Build a modules index export",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {
+    "@lump/write": "^0.1.0",
+    "globby": "^6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  }
+}
