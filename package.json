@@ -9,7 +9,8 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "rm -rf tests/tmp && jest"
+    "test": "rm -rf tests/tmp && jest",
+    "lint": "eslint packages/ --ignore-pattern node_modules/"
   },
   "devDependencies": {
     "eslint": "^4.8.0",
