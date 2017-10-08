@@ -1,19 +1,12 @@
 const rollup = require('rollup')
+const rollupAnalyzer = require('rollup-analyzer')
 const commonjs = require('rollup-plugin-commonjs')
-const replace = require('rollup-plugin-replace')
 const nodeResolve = require('rollup-plugin-node-resolve')
 
-const write = require('@lump/write')
-
 /*
- * Rollup build
- * f@ormat es|cjs|umd
+ * Rollup bundler wrapper
  */
-module.exports = async (config, options = {}) => {
-  if (!config) {
-    throw new Error('Missing Arguments')
-  }
-
+module.exports = async (_config, { report = false }) => {
   const plugins = [
     nodeResolve({
       jsnext: true,
@@ -22,20 +15,24 @@ module.exports = async (config, options = {}) => {
     commonjs()
   ]
 
-  const _config = Object.assign({}, config)
+  const config = {..._config}
 
-  _config.plugins = _config.plugins
-    ? plugins.concat(_config.plugins)
+  config.plugins = config.plugins
+    ? plugins.concat(config.plugins)
     : plugins
 
-  if (options.env) {
-    _config.plugins.push(replace({
-      'process.env.NODE_ENV': JSON.stringify(options.env)
-    }))
+  const bundle = await rollup.rollup(config)
+
+  if (report) {
+    const analyze = rollupAnalyzer({ limit: 5 })
+
+    try {
+      // print console optimized analysis string
+      await analyze.formatted(bundle).then(console.log)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
-  await rollup.rollup(_config).then(async bundle => {
-    const result = await bundle.generate(_config)
-    await write(_config.dest, result.code)
-  })
+  return bundle.generate(config.output)
 }
