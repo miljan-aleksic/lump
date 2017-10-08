@@ -1,0 +1,15 @@
+{
+  "name": "@lump/argv",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Miljan Aleksic",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miljan-aleksic/lump.git"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.0"
+  }
+}
