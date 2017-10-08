@@ -3,7 +3,7 @@ const path = require('path')
 const chalk = require('chalk')
 const mkdirp = require('mkdirp')
 
-module.exports = function (dest, data, options) {
+module.exports = function (dest, data, options = {}) {
   return new Promise(async (resolve, reject) => {
 
     try {
