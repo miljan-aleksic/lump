@@ -2,14 +2,14 @@ const fs = require('fs')
 
 module.exports = function (file) {
   let stats
-  
+
   return new Promise((resolve, reject) => {
     try {
       stats = fs.statSync(file)
     } catch (e) {
       reject(e)
     }
-    
+
     resolve(formatBytes(stats.size))
   })
 }

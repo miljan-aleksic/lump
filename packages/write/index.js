@@ -3,18 +3,15 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 
 module.exports = function (dest, data) {
-  return new Promise((resolve, reject) =>
-    mkdirp(path.dirname(dest), err => {
-      if (err) {
-        reject(err)
-      }
+  return new Promise(async (resolve, reject) => {
 
-      fs.writeFile(dest, data, err => {
-        if (err) {
-          return reject(err)
-        }
-        resolve(dest)
-      })
-    })
-  )
+    try {
+      await mkdirp(path.dirname(dest))
+      await fs.writeFileSync(dest, data)
+    } catch (e) {
+      reject(e)
+    }
+
+    resolve(dest)
+  })
 }
