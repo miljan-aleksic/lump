@@ -24,7 +24,7 @@ module.exports = async (_config, { report = false }) => {
   const bundle = await rollup.rollup(config)
 
   if (report) {
-    const analyze = rollupAnalyzer({ limit: 5 })
+    const analyze = rollupAnalyzer()
 
     try {
       // print console optimized analysis string
