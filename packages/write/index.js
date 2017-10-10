@@ -1,7 +1,11 @@
 const fs = require('fs')
+const zlib = require('zlib')
 const path = require('path')
 const chalk = require('chalk')
 const mkdirp = require('mkdirp')
+const { promisify } = require('util')
+
+const gzipSync = promisify(zlib.gzip)
 
 module.exports = function (dest, data, options = {}) {
   return new Promise(async (resolve, reject) => {
@@ -16,8 +20,16 @@ module.exports = function (dest, data, options = {}) {
     if (options.log) {
       const stat = await fs.statSync(dest)
       const size = formatBytes(stat.size)
+      let report = `${dest} - ${size}`
 
-      log(`${dest} - ${size}`)
+      try {
+        const zipped = await gzipSync(data)
+        report += ` (${getSize(zipped)} gzipped)`
+      } catch (e) {
+        console.log(e)
+      }
+
+      log(report)
     }
 
     resolve(dest)
@@ -26,6 +38,10 @@ module.exports = function (dest, data, options = {}) {
 
 function log (msg) {
   console.log(chalk.blue(msg))
+}
+
+function getSize (code) {
+  return (code.length / 1024).toFixed(2) + 'kb'
 }
 
 function formatBytes (bytes, decimals = 2) {
