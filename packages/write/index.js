@@ -6,12 +6,13 @@ const mkdirp = require('mkdirp')
 const { promisify } = require('util')
 
 const gzipSync = promisify(zlib.gzip)
+const mkdirpSync = promisify(mkdirp)
 
 module.exports = function (dest, data, options = {}) {
   return new Promise(async (resolve, reject) => {
 
     try {
-      await mkdirp(path.dirname(dest))
+      await mkdirpSync(path.dirname(dest))
       await fs.writeFileSync(dest, data)
     } catch (e) {
       reject(e)
