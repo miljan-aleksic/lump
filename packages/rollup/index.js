@@ -3,10 +3,14 @@ const rollupAnalyzer = require('rollup-analyzer')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
 
+const defaults = {
+  report: false
+}
+
 /*
  * Rollup bundler wrapper
  */
-module.exports = async (_config, { report = false }) => {
+module.exports = async (_config, options) => {
   const plugins = [
     nodeResolve({
       jsnext: true,
@@ -16,6 +20,7 @@ module.exports = async (_config, { report = false }) => {
   ]
 
   const config = {..._config}
+  const opts = { ...options, ...defaults }
 
   config.plugins = config.plugins
     ? plugins.concat(config.plugins)
@@ -23,7 +28,7 @@ module.exports = async (_config, { report = false }) => {
 
   const bundle = await rollup.rollup(config)
 
-  if (report) {
+  if (opts.report) {
     const analyze = rollupAnalyzer()
 
     try {
