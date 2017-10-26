@@ -23,7 +23,7 @@ module.exports = async (_config, options) => {
   const opts = { ...options, ...defaults }
 
   config.plugins = config.plugins
-    ? plugins.concat(config.plugins)
+    ? config.plugins.concat(plugins) // config plugins should resolve first
     : plugins
 
   const bundle = await rollup.rollup(config)
