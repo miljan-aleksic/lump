@@ -38,7 +38,7 @@ module.exports = function (dest, data, options = {}) {
 }
 
 function log (msg) {
-  console.log(chalk.blue(msg))
+  console.log(chalk.cyan(msg))
 }
 
 function getSize (code) {
