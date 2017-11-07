@@ -20,7 +20,7 @@ module.exports = async (_config, options) => {
   ]
 
   const config = {..._config}
-  const opts = { ...options, ...defaults }
+  const opts = { ...defaults, ...options }
 
   config.plugins = config.plugins
     ? config.plugins.concat(plugins) // config plugins should resolve first
