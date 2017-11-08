@@ -22,5 +22,5 @@ module.exports = async ({ src, content, dest, options = {} }) => {
 
 function renderLess (data, options) {
   return lessCompiler.render(data, options)
-    .then(output => output.css)
+    .then(output => output.css, error => console.log(error))
 }
