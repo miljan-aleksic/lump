@@ -1,13 +1,16 @@
 {
   "name": "@lump/less",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "index.js",
   "license": "MIT",
   "author": "Miljan Aleksic",
   "dependencies": {
     "@lump/read": "^0.1.0",
-    "@lump/write": "^0.1.0",
-    "less": "^2.7.2"
+    "@lump/write": "^0.2.4",
+    "less-plugin-clean-css": "^1.5.1"
+  },
+  "peerDependencies": {
+    "less": "^2.7.3"
   },
   "repository": {
     "type": "git",
