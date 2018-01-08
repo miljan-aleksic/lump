@@ -8,7 +8,7 @@ const write = require('@lump/write')
 /*
  * Minify CSS/JS files with optional sourceMap
  */
-module.exports = async (src, sourceMap = false) => {
+module.exports = async (src, { sourceMap = false, log = false }) => {
   if (!src) {
     throw new Error('Missing Arguments')
   }
@@ -44,11 +44,11 @@ module.exports = async (src, sourceMap = false) => {
     const url = path.basename(dest)
     code += `\n/*# sourceMappingURL=${url}*/`
 
-    await write(dest, map)
+    await write(dest, map, { log })
   }
 
   const dest = src.replace(ext, `.min${ext}`)
-  await write(dest, code)
+  await write(dest, code, { log })
 }
 
 function _minifyCSS (content, sourceMap) {
